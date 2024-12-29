@@ -35,7 +35,7 @@ CREATE TABLE skills
     id         SERIAL PRIMARY KEY,
     user_id    INT          NOT NULL,
     name       VARCHAR(100) NOT NULL,
-    skill_date DATE,
+    skill_begin_date DATE,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 
 );
