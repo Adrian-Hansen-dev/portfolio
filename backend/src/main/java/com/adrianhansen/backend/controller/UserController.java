@@ -1,6 +1,6 @@
 package com.adrianhansen.backend.controller;
 
-import com.adrianhansen.backend.entitiy.User;
+import com.adrianhansen.backend.dto.UserDetailsDto;
 import com.adrianhansen.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,12 +21,12 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers(){
+    public List<UserDetailsDto> getAllUsers(){
         return userService.findAll();
     }
 
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable int userId ){
+    public UserDetailsDto getUserById(@PathVariable int userId ){
         return userService.findById(userId);
     }
 }

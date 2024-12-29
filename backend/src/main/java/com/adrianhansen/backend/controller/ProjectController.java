@@ -1,6 +1,6 @@
 package com.adrianhansen.backend.controller;
 
-import com.adrianhansen.backend.entitiy.Project;
+import com.adrianhansen.backend.dto.ProjectDetailsDto;
 import com.adrianhansen.backend.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ public class ProjectController {
     }
 
     @GetMapping("/{projectId}")
-    public Project getProjectById(@PathVariable int projectId){
+    public ProjectDetailsDto getProjectById(@PathVariable int projectId) {
         return projectService.getProjectById(projectId);
     }
 }

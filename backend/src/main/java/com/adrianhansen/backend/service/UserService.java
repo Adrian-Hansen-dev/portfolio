@@ -1,36 +1,35 @@
 package com.adrianhansen.backend.service;
 
-import com.adrianhansen.backend.entitiy.User;
+import com.adrianhansen.backend.dto.UserDetailsDto;
+import com.adrianhansen.backend.mapper.UserDetailsDtoMapper;
 import com.adrianhansen.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final UserDetailsDtoMapper userDtoMapper;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserDetailsDtoMapper userDtoMapper) {
         this.userRepository = userRepository;
+        this.userDtoMapper = userDtoMapper;
     }
 
-    public List<User> findAll(){
-        return userRepository.findAll();
+    public List<UserDetailsDto> findAll() {
+        return userRepository.findAll()
+                .stream()
+                .map(userDtoMapper)
+                .toList();
     }
 
-    public User findById(int id){
-        Optional<User> result = userRepository.findById(id);
-
-        User user;
-        if (result.isPresent()) {
-            user = result.get();
-        }
-        else {
-            throw new RuntimeException("Did not find Employee with id: " + id);
-        }
-        return user;
+    public UserDetailsDto findById(int id) {
+        return userRepository.findById(id)
+                .map(userDtoMapper)
+                .orElseThrow(() -> new RuntimeException(
+                        "Did not find Employee with id: " + id));
     }
 }

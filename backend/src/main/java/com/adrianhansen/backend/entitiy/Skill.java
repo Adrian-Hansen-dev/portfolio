@@ -1,5 +1,5 @@
 package com.adrianhansen.backend.entitiy;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -17,20 +17,19 @@ public class Skill {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "skill_date")
-    private Date skillDate;
+    @Column(name = "skill_begin_date")
+    private Date skillBeginDate;
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "includes", joinColumns = @JoinColumn(name = "skill_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
-    @JsonIgnore
     private List<Project> projects;
 
     public Skill() {
     }
 
-    public Skill(String name, Date skillDate) {
+    public Skill(String name, Date skillBeginDate) {
         this.name = name;
-        this.skillDate = skillDate;
+        this.skillBeginDate = skillBeginDate;
     }
 
     public int getId() {
@@ -49,12 +48,12 @@ public class Skill {
         this.name = name;
     }
 
-    public Date getSkillDate() {
-        return skillDate;
+    public Date getSkillBeginDate() {
+        return skillBeginDate;
     }
 
-    public void setSkillDate(Date skillDate) {
-        this.skillDate = skillDate;
+    public void setSkillBeginDate(Date skillDate) {
+        this.skillBeginDate = skillDate;
     }
 
     public List<Project> getProjects() {
@@ -70,7 +69,7 @@ public class Skill {
         return "Skill{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", skillDate=" + skillDate +
+                ", skillDate=" + skillBeginDate +
                 ", projects=" + projects +
                 '}';
     }
