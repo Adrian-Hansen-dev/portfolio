@@ -21,6 +21,7 @@ public class ProjectDtoMapper implements Function<Project, ProjectDto> {
     public ProjectDto apply(Project project) {
         return new ProjectDto(
                 project.getName(),
+                project.getCreationDate(),
                 project.getSkills()
                         .stream()
                         .map(skillDtoMapper)
