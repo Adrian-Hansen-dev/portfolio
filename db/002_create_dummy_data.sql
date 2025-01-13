@@ -1,12 +1,15 @@
 -- delete all values
 DELETE
+FROM users;
+DELETE
 FROM skills;
 DELETE
 FROM projects;
 DELETE
-FROM users;
-DELETE
 FROM includes;
+DELETE
+FROM object_data;
+
 
 
 -- user
@@ -24,10 +27,13 @@ VALUES ('Python', '2020-08-01', 1);
 INSERT INTO skills (name, skill_begin_date, user_id)
 VALUES ('PostgreSQL', '2023-01-01', 1);
 
+-- objectdata
+INSERT INTO object_data (name , file_path) VALUES ('Huhn', '/Users/adrianhansen/Desktop/obj_files/chicken.OBJ');
+
 -- projects
-INSERT INTO projects (name, description, creation_date, user_id)
+INSERT INTO projects (name, description, creation_date, user_id, object_data_id)
 VALUES ('Escape Game für Messeveranstaltungen', 'Internes Projekt mit einem Entwicklungzeitraum von 5 Monaten',
-        '2022-01-01', 1);
+        '2022-01-01', 1, 1);
 INSERT INTO projects (name, description, creation_date, user_id)
 VALUES ('Kommunikationsplattform für Studierende', 'Kunden Projekt mit einem Entwicklungzeitraum von 10 Monaten',
         '2023-01-01',1);
