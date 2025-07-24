@@ -32,10 +32,6 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private List<Project> projects;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
     private List<Skill> skills;
 
     public User() {
@@ -86,28 +82,12 @@ public class User {
         this.birthdate = birthdate;
     }
 
-    public List<Project> getProjects() {
-        return projects;
-    }
-
-    public void setProjects(List<Project> courses) {
-        this.projects = courses;
-    }
-
     public List<Skill> getSkills() {
         return skills;
     }
 
     public void setSkills(List<Skill> skills) {
         this.skills = skills;
-    }
-
-    public void add(Project project) {
-        if (projects == null) {
-            projects = new ArrayList<>();
-        }
-
-        projects.add(project);
     }
 
     public void add(Skill skill) {
@@ -120,6 +100,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", academicTitle=" + academicTitle + ", birthdate=" + birthdate + ", projects=" + projects + ", skills=" + skills + '}';
+        return "User{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", academicTitle=" + academicTitle + ", birthdate=" + birthdate + ", skills=" + skills + '}';
     }
 }

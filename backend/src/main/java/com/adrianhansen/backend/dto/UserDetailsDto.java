@@ -9,7 +9,6 @@ public record UserDetailsDto(String firstName,
                              String lastName,
                              AcademicTitle academicTitle,
                              Date birthdate,
-                             List<ProjectDto> projects,
                              List<SkillDto> skills) {
 
 }
