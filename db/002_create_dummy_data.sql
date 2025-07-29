@@ -1,12 +1,12 @@
 -- delete all values
 DELETE
-FROM users;
-DELETE
-FROM skills;
+FROM includes;
 DELETE
 FROM projects;
 DELETE
-FROM includes;
+FROM users;
+DELETE
+FROM skills;
 DELETE
 FROM object_data;
 
@@ -31,9 +31,9 @@ VALUES ('PostgreSQL', '2023-01-01', 1);
 INSERT INTO object_data (name , file_path) VALUES ('Huhn', '/Users/adrianhansen/Desktop/obj_files/chicken.OBJ');
 
 -- projects
-INSERT INTO projects (name, description, creation_date, user_id, object_data_id)
+INSERT INTO projects (name, description, creation_date, user_id)
 VALUES ('Escape Game für Messeveranstaltungen', 'Internes Projekt mit einem Entwicklungzeitraum von 5 Monaten',
-        '2022-01-01', 1, 1);
+        '2022-01-01', 1);
 INSERT INTO projects (name, description, creation_date, user_id)
 VALUES ('Kommunikationsplattform für Studierende', 'Kunden Projekt mit einem Entwicklungzeitraum von 10 Monaten',
         '2023-01-01',1);
@@ -42,6 +42,83 @@ VALUES ('Webanwendung zur Verwaltung von Organisationseinheiten',
         'Uni Projekt mit einem Entwicklungzeitraum von 7 Monaten', '2024-01-01',1 );
 INSERT INTO projects (name, description, creation_date, user_id)
 VALUES ('App für Logistikmanagement', 'Kunden Projekt mit einem Entwicklungzeitraum von 5 Monaten', '2023-01-01',1);
+
+-- bestehende User-, Skills- und Objekt-Daten bleiben unverändert
+
+-- zusätzliche Projekte
+INSERT INTO projects (name, description, creation_date, user_id)
+VALUES ('Portfolio Website', 'Persönliches Projekt zur Präsentation von Arbeiten', '2022-06-01', 1);
+
+INSERT INTO projects (name, description, creation_date, user_id)
+VALUES ('3D Visualisierung für Architekturbüro', 'Freelance Projekt mit Fokus auf 3D-Modellen', '2023-04-01', 1);
+
+INSERT INTO projects (name, description, creation_date, user_id)
+VALUES ('E-Learning Plattform', 'Uni Projekt mit Fokus auf interaktive Lerninhalte', '2022-10-01', 1);
+
+INSERT INTO projects (name, description, creation_date, user_id)
+VALUES ('AI Chatbot Integration', 'Internes Projekt zur Unterstützung im Kundenservice', '2024-02-01', 1);
+
+INSERT INTO projects (name, description, creation_date, user_id)
+VALUES ('Warenwirtschaftssystem für kleinen Einzelhandel', 'Kundenprojekt zur Digitalisierung von Bestellungen', '2023-08-01', 1);
+
+INSERT INTO projects (name, description, creation_date, user_id)
+VALUES ('Online Terminbuchungssystem', 'Projekt mit Fokus auf UX/UI', '2022-11-01', 1);
+
+INSERT INTO projects (name, description, creation_date, user_id)
+VALUES ('IoT Dashboard zur Gerätesteuerung', 'Entwicklung eines Frontends zur Überwachung von Smart Devices', '2024-05-01', 1);
+
+INSERT INTO projects (name, description, creation_date, user_id)
+VALUES ('Finanzverwaltungstool', 'Tool zur Haushaltsbuchführung für Privatnutzer', '2023-03-01', 1);
+
+INSERT INTO projects (name, description, creation_date, user_id)
+VALUES ('Multiplayer Quiz App', 'Spaßprojekt zur Übung mit WebSockets', '2022-09-01', 1);
+
+INSERT INTO projects (name, description, creation_date, user_id)
+VALUES ('Datenanalyse Dashboard', 'Projekt zur Visualisierung großer Datenmengen', '2024-06-01', 1);
+
+-- Portfolio Website (5)
+INSERT INTO includes (project_id, skill_id) VALUES (5, 1);
+INSERT INTO includes (project_id, skill_id) VALUES (5, 5);
+
+-- 3D Visualisierung (6)
+INSERT INTO includes (project_id, skill_id) VALUES (6, 4);
+INSERT INTO includes (project_id, skill_id) VALUES (6, 5);
+
+-- E-Learning Plattform (7)
+INSERT INTO includes (project_id, skill_id) VALUES (7, 1);
+INSERT INTO includes (project_id, skill_id) VALUES (7, 2);
+INSERT INTO includes (project_id, skill_id) VALUES (7, 3);
+
+-- AI Chatbot (8)
+INSERT INTO includes (project_id, skill_id) VALUES (8, 4);
+INSERT INTO includes (project_id, skill_id) VALUES (8, 1);
+
+-- Warenwirtschaftssystem (9)
+INSERT INTO includes (project_id, skill_id) VALUES (9, 3);
+INSERT INTO includes (project_id, skill_id) VALUES (9, 5);
+
+-- Terminbuchungssystem (10)
+INSERT INTO includes (project_id, skill_id) VALUES (10, 1);
+INSERT INTO includes (project_id, skill_id) VALUES (10, 2);
+
+-- IoT Dashboard (11)
+INSERT INTO includes (project_id, skill_id) VALUES (11, 2);
+INSERT INTO includes (project_id, skill_id) VALUES (11, 3);
+INSERT INTO includes (project_id, skill_id) VALUES (11, 5);
+
+-- Finanztool (12)
+INSERT INTO includes (project_id, skill_id) VALUES (12, 3);
+INSERT INTO includes (project_id, skill_id) VALUES (12, 5);
+
+-- Multiplayer Quiz App (13)
+INSERT INTO includes (project_id, skill_id) VALUES (13, 1);
+INSERT INTO includes (project_id, skill_id) VALUES (13, 4);
+
+-- Datenanalyse Dashboard (14)
+INSERT INTO includes (project_id, skill_id) VALUES (14, 4);
+INSERT INTO includes (project_id, skill_id) VALUES (14, 5);
+
+
 
 -- used skills
 INSERT INTO includes (project_id, skill_id) VALUES (1, 1);
