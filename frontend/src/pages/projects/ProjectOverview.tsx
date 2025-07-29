@@ -9,7 +9,8 @@ function ProjectOverview() {
       "http://localhost:8080/user/1/projects?page=" +
         pageParam.page +
         "&size=" +
-        pageParam.size,
+        pageParam.size +
+        "&sortBy=name&ascending=true",
     );
     return res.json();
   };
@@ -27,11 +28,12 @@ function ProjectOverview() {
     queryFn: fetchProjects,
     initialPageParam: { page: 0, size: 2 },
     getNextPageParam: (lastPage) => {
-      if (lastPage.last) return undefined;
+      if (lastPage.page.number == lastPage.page.totalPages - 1)
+        return undefined;
 
       return {
-        page: lastPage.pageable.pageNumber + 1,
-        size: lastPage.pageable.pageSize, // Dynamisch, falls du size ändern willst
+        page: lastPage.page.number + 1,
+        size: lastPage.page.size, // Dynamisch, falls du size ändern willst
       };
     },
   });
