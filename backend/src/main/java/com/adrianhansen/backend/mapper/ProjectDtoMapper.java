@@ -35,6 +35,7 @@ public class ProjectDtoMapper implements Function<Project, ProjectDto> {
         }
 
         return new ProjectDto(
+                project.getId(),
                 project.getName(),
                 project.getCreationDate(),
                 imageData,
