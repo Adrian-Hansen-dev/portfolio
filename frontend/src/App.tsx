@@ -1,9 +1,14 @@
-import ProjectOverview from "./projects/ProjectOverview.tsx";
+import ProjectOverview from "./pages/projects/ProjectOverview.tsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
     <>
-      <ProjectOverview></ProjectOverview>
+      <QueryClientProvider client={queryClient}>
+        <ProjectOverview></ProjectOverview>
+      </QueryClientProvider>
     </>
   );
 }
