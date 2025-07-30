@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Project } from "./types/Project.tsx";
+import { formatDateGerman } from "../../util/dateFormat.tsx";
 
 interface ProjectCardProps {
   project: Project;
@@ -18,7 +19,7 @@ function ProjectCard({ project }: ProjectCardProps) {
     >
       <h2 className="h2">{project.name}</h2>
       <p className="p">Beschreibung des Projektes</p>
-      <p className="p2">{project.creationDate}</p>
+      <p className="p2">{formatDateGerman(project.creationDate)}</p>
     </motion.div>
   );
 }
