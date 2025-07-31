@@ -1,49 +1,73 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
-import React from "react";
-import { Project } from "./types/Project.tsx";
+import { QueryFunctionContext, useInfiniteQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
 import ProjectCard from "./ProjectCard.tsx";
+import Select from "../../components/Select/Select.tsx";
+import { PageParams, Project } from "./types.tsx";
 
 function ProjectOverview() {
-  const fetchProjects = async ({ pageParam }) => {
+  const filterOptions = [
+    { label: "Projekt ", value: "name" },
+    { label: "Datum", value: "creationDate" },
+  ];
+
+  const [sortBy, setSortBy] = useState("name");
+
+  const fetchProjects = async ({
+    queryKey,
+    pageParam,
+  }: QueryFunctionContext<string[], PageParams>) => {
+    const [_key, sortBy] = queryKey;
     const res = await fetch(
       "http://localhost:8080/user/1/projects?page=" +
         pageParam.page +
         "&size=" +
         pageParam.size +
-        "&sortBy=name&ascending=true",
+        "&sortBy=" +
+        sortBy +
+        "&ascending=true",
     );
     return res.json();
   };
 
   const {
+    isError,
+    isPending,
     data,
     error,
     fetchNextPage,
     hasNextPage,
     isFetching,
     isFetchingNextPage,
-    status,
   } = useInfiniteQuery({
-    queryKey: ["projects"],
+    queryKey: ["projects", sortBy],
     queryFn: fetchProjects,
-    initialPageParam: { page: 0, size: 2 },
+    initialPageParam: { page: 0, size: 4 },
     getNextPageParam: (lastPage) => {
       if (lastPage.page.number == lastPage.page.totalPages - 1)
         return undefined;
 
       return {
         page: lastPage.page.number + 1,
-        size: lastPage.page.size, // Dynamisch, falls du size ändern willst
+        size: lastPage.page.size,
       };
     },
   });
 
-  return status === "pending" ? (
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSortBy(event.target.value);
+  };
+
+  return isPending ? (
     <p>Loading...</p>
-  ) : status === "error" ? (
+  ) : isError ? (
     <p>Error: {error.message}</p>
   ) : (
     <>
+      <Select
+        onChange={handleChange}
+        options={filterOptions}
+        value={sortBy}
+      ></Select>
       <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-3">
         {data.pages.map((group, i) => (
           <React.Fragment key={i}>

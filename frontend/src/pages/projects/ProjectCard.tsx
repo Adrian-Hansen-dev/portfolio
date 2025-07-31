@@ -1,10 +1,6 @@
 import { motion } from "motion/react";
-import { Project } from "./types/Project.tsx";
+import { ProjectCardProps } from "./types.tsx";
 import { formatDateGerman } from "../../util/dateFormat.tsx";
-
-interface ProjectCardProps {
-  project: Project;
-}
 
 function ProjectCard({ project }: ProjectCardProps) {
   return (

@@ -10,3 +10,12 @@ export interface Skill {
   name: string;
   skillBeginDate: string;
 }
+
+export interface PageParams {
+  size: number;
+  page: number;
+}
+
+export interface ProjectCardProps {
+  project: Project;
+}
