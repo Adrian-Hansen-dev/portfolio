@@ -6,11 +6,13 @@ import { PageParams, Project } from "./types.tsx";
 
 function ProjectOverview() {
   const filterOptions = [
-    { label: "Projekt ", value: "name" },
-    { label: "Datum", value: "creationDate" },
+    { label: "Project Name (A–Z)", value: "name&ascending=true" },
+    { label: "Project Name (Z–A)", value: "name&ascending=false" },
+    { label: "Newest Projects First", value: "creationDate&ascending=false" },
+    { label: "Oldest Projects First", value: "creationDate&ascending=true" },
   ];
 
-  const [sortBy, setSortBy] = useState("name");
+  const [sortBy, setSortBy] = useState("name&ascending=true");
 
   const fetchProjects = async ({
     queryKey,
@@ -23,8 +25,7 @@ function ProjectOverview() {
         "&size=" +
         pageParam.size +
         "&sortBy=" +
-        sortBy +
-        "&ascending=true",
+        sortBy,
     );
     return res.json();
   };
@@ -62,13 +63,13 @@ function ProjectOverview() {
   ) : isError ? (
     <p>Error: {error.message}</p>
   ) : (
-    <>
+    <div className="m-10">
       <Select
         onChange={handleChange}
         options={filterOptions}
         value={sortBy}
       ></Select>
-      <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 py-4 md:grid-cols-3">
         {data.pages.map((group, i) => (
           <React.Fragment key={i}>
             {group.content.map((project: Project) => (
@@ -88,7 +89,7 @@ function ProjectOverview() {
             ? "Load more"
             : "Nothing more to load"}
       </button>
-    </>
+    </div>
   );
 }
 
