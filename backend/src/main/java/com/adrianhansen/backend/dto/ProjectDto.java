@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public record ProjectDto(
-        int id,
+        Long id,
         String name,
         Date creationDate,
         byte[] objectFile,
