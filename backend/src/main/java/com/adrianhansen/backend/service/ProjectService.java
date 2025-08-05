@@ -1,14 +1,22 @@
 package com.adrianhansen.backend.service;
-
 import com.adrianhansen.backend.dto.ProjectDetailsDto;
 import com.adrianhansen.backend.dto.ProjectDto;
+import com.adrianhansen.backend.entitiy.Project;
 import com.adrianhansen.backend.mapper.ProjectDetailsDtoMapper;
 import com.adrianhansen.backend.mapper.ProjectDtoMapper;
 import com.adrianhansen.backend.repository.ProjectRepository;
+import io.micrometer.common.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.util.List;
+
+import static com.adrianhansen.backend.specification.ProjectSpecification.containsSkills;
+import static com.adrianhansen.backend.specification.ProjectSpecification.nameLike;
 
 @Service
 public class ProjectService {
@@ -30,8 +38,11 @@ public class ProjectService {
                 .orElseThrow(() -> new RuntimeException("Did not find Project with id: " + id));
     }
 
-    public Page<ProjectDto> getProjectsByUserId(Integer userId, Pageable pageable){
-        return projectRepository.findAllByUserId(userId, pageable).map(projectDtoMapper);
+    public Page<ProjectDto> findAll(String nameLikeFilter, List<String> skillsFilter, Pageable pageable){
+        Specification<Project> filters = Specification
+                .where(StringUtils.isBlank(nameLikeFilter) ? null : nameLike(nameLikeFilter))
+                .and(CollectionUtils.isEmpty(skillsFilter) ? null : containsSkills(skillsFilter));
+        return projectRepository.findAll(filters, pageable).map(projectDtoMapper);
     }
 
 }
