@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ProjectCard from "./ProjectCard.tsx";
 import Select from "../../components/Select/Select.tsx";
 import { PageParams, Project } from "./types.tsx";
+import Loader from "../../components/Loader/Loader.tsx";
 
 function ProjectOverview() {
   const filterOptions = [
@@ -20,7 +21,7 @@ function ProjectOverview() {
   }: QueryFunctionContext<string[], PageParams>) => {
     const [_key, sortBy] = queryKey;
     const res = await fetch(
-      "http://localhost:8080/user/1/projects?page=" +
+      "http://localhost:8080/projects?page=" +
         pageParam.page +
         "&size=" +
         pageParam.size +
@@ -42,7 +43,7 @@ function ProjectOverview() {
   } = useInfiniteQuery({
     queryKey: ["projects", sortBy],
     queryFn: fetchProjects,
-    initialPageParam: { page: 0, size: 4 },
+    initialPageParam: { page: 0, size: 6 },
     getNextPageParam: (lastPage) => {
       if (lastPage.page.number == lastPage.page.totalPages - 1)
         return undefined;
@@ -59,7 +60,7 @@ function ProjectOverview() {
   };
 
   return isPending ? (
-    <p>Loading...</p>
+    <Loader />
   ) : isError ? (
     <p>Error: {error.message}</p>
   ) : (
@@ -83,11 +84,13 @@ function ProjectOverview() {
         onClick={() => fetchNextPage()}
         className="rounded-xl bg-blue-500 p-3 text-white disabled:bg-gray-200 disabled:text-gray-800"
       >
-        {isFetchingNextPage
-          ? "Loading more..."
-          : hasNextPage
-            ? "Load more"
-            : "Nothing more to load"}
+        {isFetchingNextPage ? (
+          <Loader />
+        ) : hasNextPage ? (
+          "Load more"
+        ) : (
+          "Nothing more to load"
+        )}
       </button>
     </div>
   );
