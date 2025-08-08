@@ -1,5 +1,6 @@
 import ProjectOverview from "./pages/projects/ProjectOverview.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
   const queryClient = new QueryClient();
@@ -8,6 +9,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <ProjectOverview></ProjectOverview>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
   );
