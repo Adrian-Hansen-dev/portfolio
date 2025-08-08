@@ -2,13 +2,13 @@ import { SelectProps } from "./types.tsx";
 
 function Select({ label, value, options, onChange }: SelectProps) {
   return (
-    <>
-      <label className="">
+    <div>
+      <label className="flex items-center gap-1 text-sm">
         {label}
         <select
           value={value}
           onChange={onChange}
-          className="relative block w-full max-w-md rounded-lg border-gray-200 px-4 py-3 pe-9 text-sm shadow-md focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+          className="block max-w-md cursor-pointer appearance-none rounded-xl px-2 py-3 font-bold hover:bg-gray-100 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
         >
           {options.map((option) => (
             <option key={option.value} value={option.value}>
@@ -17,7 +17,7 @@ function Select({ label, value, options, onChange }: SelectProps) {
           ))}
         </select>
       </label>
-    </>
+    </div>
   );
 }
 

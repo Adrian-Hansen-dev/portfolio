@@ -17,14 +17,18 @@ function ProjectOverview() {
   };
 
   return (
-    <>
-      <Select
-        onChange={handleChange}
-        options={filterOptions}
-        value={sortBy}
-      ></Select>
+    <div className="mx-4 flex w-full flex-col md:mx-0 md:max-w-5xl">
+      <div className="flex justify-between">
+        <h2>Test</h2>
+        <Select
+          onChange={handleChange}
+          options={filterOptions}
+          value={sortBy}
+          label={"Sort by"}
+        ></Select>
+      </div>
       <ProjectList sortBy={sortBy}></ProjectList>
-    </>
+    </div>
   );
 }
 

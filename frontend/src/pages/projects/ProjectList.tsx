@@ -51,38 +51,23 @@ function ProjectList({ sortBy }: ProjectListProps) {
   ) : isError ? (
     <p>Error: {error.message}</p>
   ) : (
-    <div className="m-10">
-      <InfiniteScrollContainer
-        onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
-        className={"grid grid-cols-1 gap-4 py-4 md:grid-cols-3"}
-      >
-        {data.pages.map((group, i) => (
-          <React.Fragment key={i}>
-            {group.content.map((project: Project) => (
-              <ProjectCard key={project.id} project={project}></ProjectCard>
-            ))}
-          </React.Fragment>
-        ))}
-        {isFetchingNextPage && (
-          <div className="mx-2 flex justify-center">
-            <Loader></Loader>
-          </div>
-        )}
-      </InfiniteScrollContainer>
-      {/*<button*/}
-      {/*  disabled={!hasNextPage || isFetching}*/}
-      {/*  onClick={() => fetchNextPage()}*/}
-      {/*  className="rounded-xl bg-blue-500 p-3 text-white disabled:bg-gray-200 disabled:text-gray-800"*/}
-      {/*>*/}
-      {/*  {isFetchingNextPage ? (*/}
-      {/*    <Loader />*/}
-      {/*  ) : hasNextPage ? (*/}
-      {/*    "Load more"*/}
-      {/*  ) : (*/}
-      {/*    "Nothing more to load"*/}
-      {/*  )}*/}
-      {/*</button>*/}
-    </div>
+    <InfiniteScrollContainer
+      onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
+      className={"grid grid-cols-1 gap-4 py-4 md:grid-cols-3"}
+    >
+      {data.pages.map((group, i) => (
+        <React.Fragment key={i}>
+          {group.content.map((project: Project) => (
+            <ProjectCard key={project.id} project={project}></ProjectCard>
+          ))}
+        </React.Fragment>
+      ))}
+      {isFetchingNextPage && (
+        <div className="col-span-full flex items-center justify-center">
+          <Loader></Loader>
+        </div>
+      )}
+    </InfiniteScrollContainer>
   );
 }
 

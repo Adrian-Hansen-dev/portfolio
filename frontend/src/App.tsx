@@ -6,12 +6,12 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <>
+    <div className="flex justify-center">
       <QueryClientProvider client={queryClient}>
         <ProjectOverview></ProjectOverview>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
-    </>
+    </div>
   );
 }
 
