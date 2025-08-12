@@ -11,6 +11,6 @@ public class SkillDtoMapper implements Function<Skill, SkillDto> {
 
     @Override
     public SkillDto apply(Skill skill) {
-        return new SkillDto(skill.getName(), skill.getSkillBeginDate());
+        return new SkillDto(skill.getName());
     }
 }
