@@ -1,11 +1,7 @@
 export interface SelectProps {
   label?: string;
+  placeholder?: string;
   value: string;
-  options: Option[];
+  options: { label: string; value: string }[];
   onChange: (event: any) => void;
-}
-
-interface Option {
-  label: string;
-  value: string;
 }

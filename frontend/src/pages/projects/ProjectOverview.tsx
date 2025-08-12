@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import Select from "../../components/Select/Select.tsx";
+import { useState } from "react";
 import ProjectList from "./ProjectList.tsx";
+import CustomSelect from "../../components/Select/CustomSelect.tsx";
+import { useQuery } from "@tanstack/react-query";
+import MultiSelect from "@/components/Multi-Select/MultiSelect.tsx";
 
 function ProjectOverview() {
   const filterOptions = [
@@ -10,24 +12,53 @@ function ProjectOverview() {
     { label: "Oldest Projects First", value: "creationDate&ascending=true" },
   ];
 
-  const [sortBy, setSortBy] = useState("name&ascending=true");
+  const { data, isLoading } = useQuery({
+    queryKey: ["skills"],
+    queryFn: async () => {
+      const response = await fetch("http://localhost:8080/skill");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    },
+  });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSortBy(event.target.value);
+  const skillOptions: { label: string; value: string }[] = (data ?? []).map(
+    (skill: { name: string }) => ({
+      label: skill.name,
+      value: skill.name,
+    }),
+  );
+
+  const [sortBy, setSortBy] = useState("name&ascending=true");
+  const [filterBy, setFilterBy] = useState<string[]>([]);
+
+  const handleSortChange = (value: string) => {
+    setSortBy(value);
+  };
+
+  const handleFilterChange = (value: string[]) => {
+    setFilterBy(value);
   };
 
   return (
     <div className="mx-4 flex w-full flex-col md:mx-0 md:max-w-5xl">
       <div className="flex justify-between">
-        <h2>Test</h2>
-        <Select
-          onChange={handleChange}
+        <MultiSelect
+          label={"Filter by"}
+          options={skillOptions}
+          value={filterBy}
+          onChange={handleFilterChange}
+          isLoading={isLoading}
+        ></MultiSelect>
+        <CustomSelect
+          onChange={handleSortChange}
           options={filterOptions}
           value={sortBy}
           label={"Sort by"}
-        ></Select>
+        ></CustomSelect>
       </div>
-      <ProjectList sortBy={sortBy}></ProjectList>
+      <ProjectList sortBy={sortBy} filterBySkill={filterBy}></ProjectList>
     </div>
   );
 }

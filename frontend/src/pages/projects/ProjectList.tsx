@@ -1,23 +1,30 @@
 import { QueryFunctionContext, useInfiniteQuery } from "@tanstack/react-query";
-import { PageParams, Project, ProjectListProps } from "./types.tsx";
+import { PageParams, Project } from "./types.tsx";
 import Loader from "../../components/Loader/Loader.tsx";
 import ProjectCard from "./ProjectCard.tsx";
 import React from "react";
 import InfiniteScrollContainer from "../../components/InfiniteScrollContainer/InfiniteScrollContainer.tsx";
 
-function ProjectList({ sortBy }: ProjectListProps) {
+interface ProjectListProps {
+  sortBy: string;
+  filterBySkill: string[];
+}
+
+function ProjectList({ sortBy, filterBySkill }: ProjectListProps) {
   const fetchProjects = async ({
     queryKey,
     pageParam,
   }: QueryFunctionContext<string[], PageParams>) => {
-    const [_key, sortBy] = queryKey;
+    const [_key, sortBy, filterBy] = queryKey;
     const res = await fetch(
       "http://localhost:8080/projects?page=" +
         pageParam.page +
         "&size=" +
         pageParam.size +
         "&sortBy=" +
-        sortBy,
+        sortBy +
+        "&" +
+        filterBy,
     );
     return res.json();
   };
@@ -32,7 +39,13 @@ function ProjectList({ sortBy }: ProjectListProps) {
     isFetching,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["projects", sortBy],
+    queryKey: [
+      "projects",
+      sortBy,
+      filterBySkill
+        .map((skill) => `skills=${encodeURIComponent(skill)}`)
+        .join("&"),
+    ],
     queryFn: fetchProjects,
     initialPageParam: { page: 0, size: 6 },
     getNextPageParam: (lastPage) => {

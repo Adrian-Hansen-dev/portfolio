@@ -19,7 +19,3 @@ export interface PageParams {
 export interface ProjectCardProps {
   project: Project;
 }
-
-export interface ProjectListProps {
-  sortBy: string;
-}
