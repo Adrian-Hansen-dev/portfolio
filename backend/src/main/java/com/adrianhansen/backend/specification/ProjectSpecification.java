@@ -18,6 +18,8 @@ public class ProjectSpecification {
 
     public static Specification<Project> containsSkills(List<String> skills){
         return ((root, query, builder) -> {
+            assert query != null;
+            query.distinct(true);
             Join<Project, Skill> skillsOfProject = root.join("skills", JoinType.INNER);
             return skillsOfProject.get("name").in(skills);
         });
