@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { ProjectCardProps, Skill } from "./types.tsx";
 import { formatDateGerman } from "../../util/dateFormat.tsx";
-import Badge from "../../components/Badge/Badge.tsx";
+import { Badge } from "@/components/ui/badge";
 
 function ProjectCard({ project }: ProjectCardProps) {
   return (
@@ -19,7 +19,7 @@ function ProjectCard({ project }: ProjectCardProps) {
       <p className="p2">{formatDateGerman(project.creationDate)}</p>
       <div className="flex gap-2">
         {project.skills.map((skill: Skill) => (
-          <Badge label={skill.name}></Badge>
+          <Badge variant="outline">{skill.name}</Badge>
         ))}
       </div>
     </motion.div>
