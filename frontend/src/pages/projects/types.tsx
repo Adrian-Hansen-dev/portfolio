@@ -15,7 +15,3 @@ export interface PageParams {
   size: number;
   page: number;
 }
-
-export interface ProjectCardProps {
-  project: Project;
-}

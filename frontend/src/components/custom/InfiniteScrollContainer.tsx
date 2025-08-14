@@ -1,5 +1,11 @@
-import { InfiniteScrollContainerProps } from "./types.tsx";
 import { useInView } from "react-intersection-observer";
+import React from "react";
+
+interface InfiniteScrollContainerProps {
+  children: React.ReactNode;
+  onBottomReached: () => void;
+  className?: string;
+}
 
 export default function InfiniteScrollContainer({
   children,

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import ProjectList from "./ProjectList.tsx";
-import CustomSelect from "../../components/Select/CustomSelect.tsx";
 import { useQuery } from "@tanstack/react-query";
-import MultiSelect from "@/components/Multi-Select/MultiSelect.tsx";
 import { ArrowDownUp, Funnel, X } from "lucide-react";
-import SearchInput from "@/components/SearchInput/SearchInput.tsx";
 import { Button } from "@/components/ui/button.tsx";
+import SearchInput from "@/components/custom/SearchInput.tsx";
+import MultiSelect from "@/components/custom/MultiSelect.tsx";
+import CustomSelect from "@/components/custom/CustomSelect.tsx";
 
 function ProjectOverview() {
   const filterOptions = [

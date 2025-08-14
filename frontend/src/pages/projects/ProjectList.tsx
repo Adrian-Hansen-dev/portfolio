@@ -1,9 +1,9 @@
 import { QueryFunctionContext, useInfiniteQuery } from "@tanstack/react-query";
 import { PageParams, Project } from "./types.tsx";
-import Loader from "../../components/Loader/Loader.tsx";
 import ProjectCard from "./ProjectCard.tsx";
 import React from "react";
-import InfiniteScrollContainer from "../../components/InfiniteScrollContainer/InfiniteScrollContainer.tsx";
+import { Loader } from "lucide-react";
+import InfiniteScrollContainer from "@/components/custom/InfiniteScrollContainer.tsx";
 
 interface ProjectListProps {
   sortBy: string;
