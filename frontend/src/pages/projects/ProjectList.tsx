@@ -8,14 +8,15 @@ import InfiniteScrollContainer from "@/components/custom/InfiniteScrollContainer
 interface ProjectListProps {
   sortBy: string;
   filterBySkill: string[];
+  searchBy: string;
 }
 
-function ProjectList({ sortBy, filterBySkill }: ProjectListProps) {
+function ProjectList({ searchBy, sortBy, filterBySkill }: ProjectListProps) {
   const fetchProjects = async ({
     queryKey,
     pageParam,
   }: QueryFunctionContext<string[], PageParams>) => {
-    const [_key, sortBy, filterBy] = queryKey;
+    const [_key, searchBy, sortBy, filterBy] = queryKey;
     const res = await fetch(
       "http://localhost:8080/projects?page=" +
         pageParam.page +
@@ -23,6 +24,8 @@ function ProjectList({ sortBy, filterBySkill }: ProjectListProps) {
         pageParam.size +
         "&sortBy=" +
         sortBy +
+        "&nameLike=" +
+        searchBy +
         "&" +
         filterBy,
     );
@@ -41,6 +44,7 @@ function ProjectList({ sortBy, filterBySkill }: ProjectListProps) {
   } = useInfiniteQuery({
     queryKey: [
       "projects",
+      searchBy,
       sortBy,
       filterBySkill
         .map((skill) => `skills=${encodeURIComponent(skill)}`)

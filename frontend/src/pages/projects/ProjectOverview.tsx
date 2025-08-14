@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import ProjectList from "./ProjectList.tsx";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowDownUp, Funnel, X } from "lucide-react";
@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button.tsx";
 import SearchInput from "@/components/custom/SearchInput.tsx";
 import MultiSelect from "@/components/custom/MultiSelect.tsx";
 import CustomSelect from "@/components/custom/CustomSelect.tsx";
+import useDebounce from "@/hooks/useDebounce.tsx";
 
 function ProjectOverview() {
   const filterOptions = [
@@ -35,6 +36,9 @@ function ProjectOverview() {
 
   const [sortBy, setSortBy] = useState("name&ascending=true");
   const [filterBy, setFilterBy] = useState<string[]>([]);
+  const [searchBy, setSearchBy] = useState("");
+
+  const debounceSearchBy = useDebounce(searchBy, 500);
 
   const handleSortChange = (value: string) => {
     setSortBy(value);
@@ -44,11 +48,19 @@ function ProjectOverview() {
     setFilterBy(value);
   };
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchBy(event.target.value);
+  };
+
   return (
     <div className="mx-4 flex w-full flex-col md:mx-0 md:max-w-5xl">
       <div className="flex items-center justify-between">
         <div className="flex items-center justify-start space-x-2">
-          <SearchInput></SearchInput>
+          <SearchInput
+            value={searchBy}
+            placeholder={"Search..."}
+            onInput={handleSearchChange}
+          ></SearchInput>
           <MultiSelect
             label="Skills"
             icon={<Funnel className="h-4 w-4" />}
@@ -76,7 +88,11 @@ function ProjectOverview() {
           icon={<ArrowDownUp className="h-4 w-4" />}
         ></CustomSelect>
       </div>
-      <ProjectList sortBy={sortBy} filterBySkill={filterBy}></ProjectList>
+      <ProjectList
+        sortBy={sortBy}
+        filterBySkill={filterBy}
+        searchBy={debounceSearchBy}
+      ></ProjectList>
     </div>
   );
 }
