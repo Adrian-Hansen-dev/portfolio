@@ -14,7 +14,7 @@ function ProjectCard({ project }: ProjectCardProps) {
       animate={{ opacity: 1, scale: 1 }}
       transition={{
         duration: 0.4,
-        scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+        scale: { type: "spring", visualDuration: 0.4, bounce: 0.3 },
       }}
       className="rounded-xl bg-gray-50 p-4"
     >

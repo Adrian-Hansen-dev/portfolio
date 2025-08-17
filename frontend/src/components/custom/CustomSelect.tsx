@@ -6,9 +6,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import React from "react";
+import useIsMobile from "@/hooks/useIsMobile.tsx";
 
 interface CustomSelectProps {
-  label?: string;
+  label: string;
   icon?: React.ReactNode;
   value: string;
   options: { label: string; value: string }[];
@@ -22,19 +23,20 @@ export default function CustomSelect({
   options,
   onChange,
 }: CustomSelectProps) {
+  const isMobile = useIsMobile();
   return (
     <Select onValueChange={onChange} value={value}>
-      <SelectTrigger className="flex items-center">
-        {label && (
+      <SelectTrigger className="flex items-center [&>svg]:hidden">
+        <p className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
+          {icon}
+          {label}
+        </p>
+        {!isMobile && (
           <>
-            <p className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
-              {icon}
-              {label}
-            </p>
             <hr className="border-border mx-0.5 h-6 border-l bg-red-300" />
+            <SelectValue />
           </>
         )}
-        <SelectValue />
       </SelectTrigger>
       <SelectContent align="end">
         {options.map((option) => (

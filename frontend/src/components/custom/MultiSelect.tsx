@@ -18,6 +18,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Skeleton } from "@/components/ui/skeleton";
+import useIsMobile from "@/hooks/useIsMobile.tsx";
 
 interface MultiSelectProps {
   options?: { label: string; value: string }[];
@@ -40,6 +41,7 @@ export default function MultiSelect({
   isLoading = false,
   disabled = false,
 }: MultiSelectProps) {
+  const isMobile = useIsMobile();
   const [open, setOpen] = React.useState(false);
 
   const handleUnselect = (item: string) => {
@@ -69,9 +71,9 @@ export default function MultiSelect({
         >
           <div className="flex flex-1 justify-between overflow-hidden">
             <span className="text-muted-foreground flex items-center gap-1 px-2 text-sm">
-              {icon} {label}
+              {icon} {!isMobile ? label : value.length !== 0 && value.length}
             </span>
-            {value.length !== 0 && (
+            {value.length !== 0 && !isMobile && (
               <div
                 className="flex flex-1 gap-1 overflow-x-auto px-3 py-2"
                 style={{

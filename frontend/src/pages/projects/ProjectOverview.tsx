@@ -73,7 +73,10 @@ function ProjectOverview() {
             <Button
               variant="secondary"
               size="sm"
-              onClick={() => setFilterBy([])}
+              onClick={() => {
+                setFilterBy([]);
+                setSearchBy("");
+              }}
             >
               <X />
               Reset
