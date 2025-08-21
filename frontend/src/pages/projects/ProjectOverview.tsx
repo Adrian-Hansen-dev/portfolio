@@ -53,7 +53,11 @@ function ProjectOverview() {
   };
 
   return (
-    <div className="mx-4 flex w-full flex-col md:mx-0 md:max-w-5xl">
+    <section
+      id="projects"
+      className="my-4 flex w-full scroll-mt-20 flex-col md:mx-0 md:max-w-5xl"
+    >
+      <h1 className="h1">Projects</h1>
       <div className="flex items-center justify-between">
         <div className="flex items-center justify-start space-x-2">
           <SearchInput
@@ -96,7 +100,7 @@ function ProjectOverview() {
         filterBySkill={filterBy}
         searchBy={debounceSearchBy}
       ></ProjectList>
-    </div>
+    </section>
   );
 }
 
