@@ -2,28 +2,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-
-
+/*shadcn styles*/
 @custom-variant dark (&:is(.dark *));
-
-@layer components {
-    .h1 {
-        @apply font-bold text-[1.125rem] leading-[1.4em] font-sans text-gray-900
-    }
-
-    .h2 {
-        @apply font-bold text-[1rem] leading-[1.4em] font-sans text-gray-900
-    }
-
-    .p {
-        @apply text-[1rem] leading-[1.4em] font-sans text-gray-900
-    }
-
-    .p2 {
-        @apply text-[0.875rem] leading-[1.4em] font-sans text-gray-500
-    }
-
-}
 
 @theme inline {
 
@@ -243,6 +223,26 @@
   body {
     @apply bg-background text-foreground;
 
+    }
+
+}
+
+/*custom styles*/
+@layer components {
+    .h1 {
+        @apply font-bold text-[1.125rem] leading-[1.4em] font-sans text-foreground
+    }
+
+    .h2 {
+        @apply font-bold text-[1rem] leading-[1.4em] font-sans text-foreground
+    }
+
+    .p {
+        @apply text-[1rem] leading-[1.4em] font-sans text-foreground
+    }
+
+    .p2 {
+        @apply text-[0.875rem] leading-[1.4em] font-sans text-muted-foreground
     }
 
 }

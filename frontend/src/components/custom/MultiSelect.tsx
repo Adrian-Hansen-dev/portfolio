@@ -83,7 +83,7 @@ export default function MultiSelect({
               >
                 {value.length > 3 ? (
                   <>
-                    <hr className="border-border mx-0.5 my-auto h-6 border-l bg-red-300" />
+                    <hr className="border-border bg-border mx-0.5 my-auto h-6 border-l" />
 
                     <Badge variant="default" className="text-xs">
                       {value.length} skills selected
@@ -91,7 +91,7 @@ export default function MultiSelect({
                   </>
                 ) : (
                   <>
-                    <hr className="border-border mx-0.5 my-auto h-6 border-l bg-red-300" />
+                    <hr className="border-border bg-border mx-0.5 my-auto h-6 border-l" />
                     {value.map((item) => {
                       const option = options?.find((opt) => opt.value === item);
                       return (
@@ -137,8 +137,8 @@ export default function MultiSelect({
                     onSelect={() => handleSelect(option.value)}
                   >
                     {value.includes(option.value) ? (
-                      <div className="mr-2 rounded-sm bg-black p-0.5">
-                        <Check className="h-2.5 w-2.5 text-white" />
+                      <div className="bg-foreground mr-2 rounded-sm p-0.5">
+                        <Check className="text-background h-2.5 w-2.5" />
                       </div>
                     ) : (
                       <div className="mr-2 h-5 w-5 rounded-sm border"></div>

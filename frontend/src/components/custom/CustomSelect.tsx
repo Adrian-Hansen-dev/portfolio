@@ -33,7 +33,7 @@ export default function CustomSelect({
         </p>
         {!isMobile && (
           <>
-            <hr className="border-border mx-0.5 h-6 border-l bg-red-300" />
+            <hr className="border-border bg-border mx-0.5 h-6 border-l" />
             <SelectValue />
           </>
         )}
