@@ -55,7 +55,7 @@ function ProjectOverview() {
   return (
     <section
       id="projects"
-      className="my-4 flex w-full scroll-mt-20 flex-col md:mx-0 md:max-w-5xl"
+      className="flex w-full scroll-mt-20 flex-col p-4 md:max-w-5xl"
     >
       <h1 className="h1">Projects</h1>
       <div className="flex items-center justify-between">

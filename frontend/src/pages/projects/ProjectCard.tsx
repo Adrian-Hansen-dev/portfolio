@@ -14,7 +14,7 @@ interface ProjectCardProps {
 
 function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="min-h-sm w-full max-w-md">
+    <Card className="min-h-sm w-full md:max-w-md">
       <CardHeader>
         <CardTitle className="h2">{project.name}</CardTitle>
         <CardDescription className="p2">
