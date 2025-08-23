@@ -73,7 +73,7 @@ function ProjectOverview() {
             onChange={handleFilterChange}
             isLoading={isLoading}
           ></MultiSelect>
-          {filterBy.length !== 0 && (
+          {(filterBy.length !== 0 || searchBy !== "") && (
             <Button
               variant="secondary"
               size="sm"
