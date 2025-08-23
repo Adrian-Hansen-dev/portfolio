@@ -13,8 +13,9 @@ FROM object_data;
 
 
 -- user
-INSERT INTO users (first_name, last_name, birthdate)
-VALUES ('Adrian', 'Hansen', '01-01-2000');
+INSERT INTO users (first_name, last_name, profession, description, github_link, linked_in_link)
+VALUES ('Adrian', 'Hansen', 'Software Engineering Student', 'About
+I’m a developer passionate about crafting accessible, pixel-perfect user interfaces that blend thoughtful design with robust engineering. My favorite work lies at the intersection of design and development, creating experiences that not only look great but are meticulously built for performance and usability.', 'https://github.com/Adrian-Hansen-dev', 'https://www.linkedin.com/in/adrian-hansen-496736316/' );
 -- skills
 INSERT INTO skills (name, skill_begin_date, user_id)
 VALUES ('React', '2022-01-01', 1);
@@ -26,9 +27,6 @@ INSERT INTO skills (name, skill_begin_date, user_id)
 VALUES ('Python', '2020-08-01', 1);
 INSERT INTO skills (name, skill_begin_date, user_id)
 VALUES ('PostgreSQL', '2023-01-01', 1);
-
--- objectdata
-INSERT INTO object_data (name , file_path) VALUES ('Huhn', '/Users/adrianhansen/Desktop/obj_files/chicken.OBJ');
 
 -- projects
 INSERT INTO projects (name, description, creation_date, user_id)
@@ -46,8 +44,8 @@ VALUES ('App für Logistikmanagement', 'Kunden Projekt mit einem Entwicklungzeit
 -- bestehende User-, Skills- und Objekt-Daten bleiben unverändert
 
 -- zusätzliche Projekte
-INSERT INTO projects (name, description, creation_date, user_id)
-VALUES ('Portfolio Website', 'Persönliches Projekt zur Präsentation von Arbeiten', '2022-06-01', 1);
+INSERT INTO projects (name, description, creation_date, repo_link, demo_link, user_id)
+VALUES ('Open GL Space Demo', 'In this OpenGL project, fundamental computer graphics concepts are demonstrated within a space-themed 3D scene.', '2022-06-01', 'https://github.com/Adrian-Hansen-dev/opengl-space-demo', 'https://adrian-hansen-dev.github.io/opengl-space-demo/', 1);
 
 INSERT INTO projects (name, description, creation_date, user_id)
 VALUES ('3D Visualisierung für Architekturbüro', 'Freelance Projekt mit Fokus auf 3D-Modellen', '2023-04-01', 1);

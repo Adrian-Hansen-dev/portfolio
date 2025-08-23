@@ -1,8 +1,6 @@
 package com.adrianhansen.backend.service;
-import com.adrianhansen.backend.dto.ProjectDetailsDto;
 import com.adrianhansen.backend.dto.ProjectDto;
 import com.adrianhansen.backend.entitiy.Project;
-import com.adrianhansen.backend.mapper.ProjectDetailsDtoMapper;
 import com.adrianhansen.backend.mapper.ProjectDtoMapper;
 import com.adrianhansen.backend.repository.ProjectRepository;
 import io.micrometer.common.util.StringUtils;
@@ -22,20 +20,12 @@ import static com.adrianhansen.backend.specification.ProjectSpecification.nameLi
 public class ProjectService {
 
     private final ProjectRepository projectRepository;
-    private final ProjectDetailsDtoMapper projectDetailsDtoMapper;
     private final ProjectDtoMapper projectDtoMapper;
 
     @Autowired
-    public ProjectService(ProjectRepository projectRepository, ProjectDetailsDtoMapper projectDetailsDtoMapper, ProjectDtoMapper projectDtoMapper) {
+    public ProjectService(ProjectRepository projectRepository, ProjectDtoMapper projectDtoMapper) {
         this.projectRepository = projectRepository;
-        this.projectDetailsDtoMapper = projectDetailsDtoMapper;
         this.projectDtoMapper = projectDtoMapper;
-    }
-
-    public ProjectDetailsDto getProjectById(int id) {
-        return projectRepository.findById(id)
-                .map(projectDetailsDtoMapper)
-                .orElseThrow(() -> new RuntimeException("Did not find Project with id: " + id));
     }
 
     public Page<ProjectDto> findAll(String nameLikeFilter, List<String> skillsFilter, Pageable pageable){

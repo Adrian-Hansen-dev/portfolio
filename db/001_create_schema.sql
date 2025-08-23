@@ -3,28 +3,19 @@ DROP TABLE IF EXISTS includes;
 DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS skills;
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS object_data;
 DROP TYPE IF EXISTS academic_title_enum;
 
 
--- enums
-CREATE TYPE academic_title_enum AS ENUM ('DR', 'PROF', 'MA', 'BA', 'MSC', 'BSC');
-
--- tables
-CREATE TABLE object_data
-(
-    id        SERIAL PRIMARY KEY,
-    name      VARCHAR(100) NOT NULL,
-    file_path VARCHAR(100) NOT NULL
-);
 
 CREATE TABLE users
 (
     id             SERIAL PRIMARY KEY,
     first_name     VARCHAR(100) NOT NULL,
     last_name      VARCHAR(100) NOT NULL,
-    academic_title academic_title_enum,
-    birthdate      DATE
+    profession     VARCHAR(100),
+    description    VARCHAR(400),
+    github_link    VARCHAR(200),
+    linked_in_link VARCHAR(200)
 );
 
 CREATE TABLE projects
@@ -33,11 +24,10 @@ CREATE TABLE projects
     name           VARCHAR(100) NOT NULL,
     description    VARCHAR(200),
     repo_link      VARCHAR(200),
+    demo_link      VARCHAR(200),
     creation_date  DATE,
     user_id        INT          NOT NULL,
-    object_data_id INT,
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (object_data_id) REFERENCES object_data (id)
+    FOREIGN KEY (user_id) REFERENCES users (id)
 
 );
 

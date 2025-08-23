@@ -9,6 +9,6 @@ import java.util.function.Function;
 public class UserDtoMapper implements Function<User, UserDto>{
     @Override
     public UserDto apply(User user) {
-        return new UserDto(user.getFirstName(), user.getLastName(), user.getAcademicTitle());
+        return new UserDto(user.getFirstName(), user.getLastName());
     }
 }

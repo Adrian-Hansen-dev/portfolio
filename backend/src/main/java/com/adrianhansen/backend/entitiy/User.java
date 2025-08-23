@@ -1,11 +1,7 @@
 package com.adrianhansen.backend.entitiy;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.JdbcType;
-import org.hibernate.dialect.PostgreSQLEnumJdbcType;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,13 +18,17 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "academic_title")
-    @Enumerated(EnumType.STRING)
-    @JdbcType(value = PostgreSQLEnumJdbcType.class)
-    private AcademicTitle academicTitle;
+    @Column(name = "profession")
+    private String profession;
 
-    @Column(name = "birthdate")
-    private Date birthdate;
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "github_link")
+    private String githubLink;
+
+    @Column(name = "linked_in_link")
+    private String linkedInLink;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -66,20 +66,36 @@ public class User {
         this.lastName = lastName;
     }
 
-    public AcademicTitle getAcademicTitle() {
-        return academicTitle;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setAcademicTitle(AcademicTitle academicTitle) {
-        this.academicTitle = academicTitle;
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public String getDescription() {
+        return description;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getGithubLink() {
+        return githubLink;
+    }
+
+    public void setGithubLink(String githubLink) {
+        this.githubLink = githubLink;
+    }
+
+    public String getLinkedInLink() {
+        return linkedInLink;
+    }
+
+    public void setLinkedInLink(String linkedInLink) {
+        this.linkedInLink = linkedInLink;
     }
 
     public List<Skill> getSkills() {
@@ -96,10 +112,5 @@ public class User {
         }
 
         skills.add(skill);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", academicTitle=" + academicTitle + ", birthdate=" + birthdate + ", skills=" + skills + '}';
     }
 }

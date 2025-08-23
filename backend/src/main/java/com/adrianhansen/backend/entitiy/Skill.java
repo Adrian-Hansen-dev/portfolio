@@ -63,14 +63,4 @@ public class Skill {
     public void setProjects(List<Project> projects) {
         this.projects = projects;
     }
-
-    @Override
-    public String toString() {
-        return "Skill{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", skillDate=" + skillBeginDate +
-                ", projects=" + projects +
-                '}';
-    }
 }

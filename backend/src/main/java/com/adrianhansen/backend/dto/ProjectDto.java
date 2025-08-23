@@ -6,8 +6,10 @@ import java.util.List;
 public record ProjectDto(
         Long id,
         String name,
+        String description,
+        String repoLink,
+        String demoLink,
         Date creationDate,
-        byte[] objectFile,
         List<SkillDto> skills) {
 
 }

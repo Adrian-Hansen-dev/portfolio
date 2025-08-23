@@ -21,7 +21,10 @@ public class Project {
     private String description;
 
     @Column(name = "repo_link")
-    private String repolink;
+    private String repoLink;
+
+    @Column(name = "demo_link")
+    private String demoLink;
 
     @Column(name = "creation_date")
     private Date creationDate;
@@ -29,10 +32,6 @@ public class Project {
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "object_data_id")
-    private ObjectData objectData;
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "includes", joinColumns = @JoinColumn(name = "project_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
@@ -78,12 +77,20 @@ public class Project {
         this.description = description;
     }
 
-    public String getRepolink() {
-        return repolink;
+    public String getRepoLink() {
+        return repoLink;
     }
 
-    public void setRepolink(String repolink) {
-        this.repolink = repolink;
+    public void setRepoLink(String repoLink) {
+        this.repoLink = repoLink;
+    }
+
+    public String getDemoLink() {
+        return demoLink;
+    }
+
+    public void setDemoLink(String demoLink) {
+        this.demoLink = demoLink;
     }
 
     public Date getCreationDate() {
@@ -100,13 +107,5 @@ public class Project {
 
     public void setSkills(List<Skill> skills) {
         this.skills = skills;
-    }
-
-    public ObjectData getObjectData() {
-        return objectData;
-    }
-
-    public void setObjectData(ObjectData objectData) {
-        this.objectData = objectData;
     }
 }

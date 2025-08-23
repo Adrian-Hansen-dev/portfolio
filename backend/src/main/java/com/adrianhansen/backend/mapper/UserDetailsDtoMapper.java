@@ -20,8 +20,10 @@ public class UserDetailsDtoMapper implements Function<User, UserDetailsDto> {
         return new UserDetailsDto(
                 user.getFirstName(),
                 user.getLastName(),
-                user.getAcademicTitle(),
-                user.getBirthdate(),
+                user.getProfession(),
+                user.getDescription(),
+                user.getGithubLink(),
+                user.getLinkedInLink(),
                 user.getSkills().stream().map(skillDtoMapper).toList());
     }
 }
