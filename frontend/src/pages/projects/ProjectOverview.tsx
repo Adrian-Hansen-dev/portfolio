@@ -57,7 +57,7 @@ function ProjectOverview() {
       id="projects"
       className="flex w-full scroll-mt-20 flex-col p-4 md:max-w-5xl"
     >
-      <h1 className="h1">Projects</h1>
+      <h2 className="h2">Projects</h2>
       <div className="flex items-center justify-between">
         <div className="flex items-center justify-start space-x-2">
           <SearchInput
