@@ -5,7 +5,7 @@ import { ModeToggle } from "@/components/ui/mode-toggle.tsx";
 
 export default function Navbar() {
   return (
-    <nav className="max-w-screen-5xl bg-background/30 fixed inset-x-5 top-2 z-10 h-16 rounded-2xl border px-4 backdrop-blur-lg backdrop-filter">
+    <nav className="max-w-screen-5xl bg-background/30 fixed inset-x-5 top-2 z-10 h-16 rounded-2xl border backdrop-blur-lg backdrop-filter md:px-4">
       <div className="mx-auto flex h-full items-center justify-between px-4">
         <Logo />
 
