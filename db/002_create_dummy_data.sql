@@ -14,8 +14,7 @@ FROM object_data;
 
 -- user
 INSERT INTO users (first_name, last_name, profession, description, github_link, linked_in_link)
-VALUES ('Adrian', 'Hansen', 'Software Engineering Student', 'About
-I’m a developer passionate about crafting accessible, pixel-perfect user interfaces that blend thoughtful design with robust engineering. My favorite work lies at the intersection of design and development, creating experiences that not only look great but are meticulously built for performance and usability.', 'https://github.com/Adrian-Hansen-dev', 'https://www.linkedin.com/in/adrian-hansen-496736316/' );
+VALUES ('Adrian', 'Hansen', 'Software Engineering Student', 'I’m Adrian Hansen, a software developer with a Bachelor’s degree in Media Design Informatics. My focus is on web and app development, working with modern technologies such as Java, TypeScript, React, Angular, and Docker. I’m especially interested in the intersection of software architecture and human-centered design, which I also explored in my thesis on integrating generative AI into design processes. Outside of coding, I’m passionate about music production, fitness, and traveling.', 'https://github.com/Adrian-Hansen-dev', 'https://www.linkedin.com/in/adrian-hansen-496736316/' );
 -- skills
 INSERT INTO skills (name, skill_begin_date, user_id)
 VALUES ('React', '2022-01-01', 1);
