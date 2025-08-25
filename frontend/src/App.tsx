@@ -3,22 +3,25 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Navbar from "@/pages/navigation/Navbar.tsx";
 import AboutOverview from "@/pages/about/AboutOverview.tsx";
-import ExperienceOverview from "@/pages/experience/ExperienceOverview.tsx";
 import { ThemeProvider } from "@/components/ui/theme-provider.tsx";
+import HeroOverview from "@/pages/hero/HeroOverview.tsx";
+import Footer from "@/pages/footer/Footer.tsx";
 
 function App() {
   const queryClient = new QueryClient();
 
   return (
-    <div className="bg-background flex min-h-screen justify-center">
+    <div className="bg-background min-h-screen flex-col items-center">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <QueryClientProvider client={queryClient}>
           <Navbar></Navbar>
-          <main className="pt-18">
+          <main className="flex flex-col items-center">
+            <HeroOverview></HeroOverview>
             <AboutOverview></AboutOverview>
-            <ExperienceOverview></ExperienceOverview>
+            {/*<ExperienceOverview></ExperienceOverview>*/}
             <ProjectOverview></ProjectOverview>
           </main>
+          <Footer></Footer>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </ThemeProvider>
