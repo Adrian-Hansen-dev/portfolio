@@ -1,6 +1,15 @@
-export default function Logo() {
+import { scrollTo } from "@/util/scrollTo.tsx";
+
+interface LogoProps {
+  linkId?: string;
+}
+
+export default function Logo({ linkId }: LogoProps) {
   return (
-    <div className="flex items-center gap-2">
+    <div
+      onClick={() => linkId && scrollTo(linkId)}
+      className="flex items-center gap-2"
+    >
       <svg
         className="text-foreground"
         width="20"
