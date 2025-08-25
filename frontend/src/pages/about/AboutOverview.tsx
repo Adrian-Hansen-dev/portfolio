@@ -14,7 +14,10 @@ export default function AboutOverview() {
   });
 
   return (
-    <section id="about" className="my-4 w-full scroll-mt-20 p-4 md:max-w-5xl">
+    <section
+      id="about"
+      className="flex min-h-screen w-full items-center p-4 md:max-w-5xl"
+    >
       {isLoading ? (
         <Loader />
       ) : isError ? (
