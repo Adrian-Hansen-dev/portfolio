@@ -171,7 +171,7 @@
 /*custom styles*/
 @layer components {
     .h1 {
-        @apply font-bold text-[2.5rem] leading-[1em] font-sans text-foreground
+        @apply font-bold text-[3rem] leading-[1em] font-sans text-foreground
     }
     .h2 {
         @apply font-bold text-[1.5rem] leading-[1.4em] font-sans text-foreground
