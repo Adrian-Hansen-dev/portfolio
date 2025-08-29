@@ -25,6 +25,8 @@ replay_pid*
 
 ### ENV ###
 *.env
+*.env.development
+*.env.production
 
 ### IDEA ###
 .idea/*
