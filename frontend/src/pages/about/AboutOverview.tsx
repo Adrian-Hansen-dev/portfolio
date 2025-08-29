@@ -2,10 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "@/components/custom/Loader.tsx";
 
 export default function AboutOverview() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:8080/user/1");
+      const response = await fetch(`${apiUrl}/user/1`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

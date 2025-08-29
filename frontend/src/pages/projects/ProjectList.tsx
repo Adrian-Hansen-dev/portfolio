@@ -12,13 +12,15 @@ interface ProjectListProps {
 }
 
 function ProjectList({ searchBy, sortBy, filterBySkill }: ProjectListProps) {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const fetchProjects = async ({
     queryKey,
     pageParam,
   }: QueryFunctionContext<string[], PageParams>) => {
     const [_key, searchBy, sortBy, filterBy] = queryKey;
     const res = await fetch(
-      "http://localhost:8080/projects?page=" +
+      `${apiUrl}/projects?page=` +
         pageParam.page +
         "&size=" +
         pageParam.size +

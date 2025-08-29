@@ -9,6 +9,8 @@ import CustomSelect from "@/components/custom/CustomSelect.tsx";
 import useDebounce from "@/hooks/useDebounce.tsx";
 
 function ProjectOverview() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const filterOptions = [
     { label: "Project Name (A–Z)", value: "name&ascending=true" },
     { label: "Project Name (Z–A)", value: "name&ascending=false" },
@@ -19,7 +21,7 @@ function ProjectOverview() {
   const { data, isLoading } = useQuery({
     queryKey: ["skills"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:8080/skill");
+      const response = await fetch(`${apiUrl}/skill`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
