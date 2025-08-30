@@ -72,7 +72,7 @@ function ProjectList({ searchBy, sortBy, filterBySkill }: ProjectListProps) {
   ) : (
     <InfiniteScrollContainer
       onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
-      className={"grid grid-cols-1 gap-4 py-4 md:grid-cols-3"}
+      className={"grid grid-cols-1 gap-4 py-4"}
     >
       {data.pages.map((group, i) => (
         <React.Fragment key={i}>

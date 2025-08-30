@@ -186,15 +186,15 @@
     }
 
     .p {
-        @apply text-[1rem] leading-[1.4em] font-sans text-foreground
+        @apply font-normal text-[1rem] leading-[1.4em] font-sans text-foreground
     }
 
     .p2 {
-        @apply text-[1rem] leading-[1.4em] font-sans text-muted-foreground
+        @apply font-normal text-[1rem] leading-[1.4em] font-sans text-muted-foreground
     }
 
     .p3 {
-        @apply text-[0.875rem] leading-[1.4em] font-sans text-muted-foreground
+        @apply font-normal text-[0.875rem] leading-[1.4em] font-sans text-muted-foreground
     }
 
 }
