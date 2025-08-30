@@ -5,9 +5,18 @@ export default function Footer() {
     <div className="bg-card border-border flex h-20 w-full items-center justify-between border border-t p-4 md:px-8">
       <Logo linkId="hero"></Logo>
       <p className="p3">
-        Made with <a href="https://react.dev/">React</a>,
-        <a href="https://spring.io/"> Spring</a> and
-        <a href="https://threejs.org/"> Three.js</a>
+        Made with{" "}
+        <a className="text-secondary-foreground" href="https://react.dev/">
+          React
+        </a>
+        {", "}
+        <a className="text-secondary-foreground" href="https://spring.io/">
+          Spring
+        </a>
+        {" and "}
+        <a className="text-secondary-foreground" href="https://threejs.org/">
+          Three.js
+        </a>
       </p>
     </div>
   );
