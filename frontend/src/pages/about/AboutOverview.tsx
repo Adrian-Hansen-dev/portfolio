@@ -22,7 +22,9 @@ export default function AboutOverview() {
       className="flex min-h-screen w-full items-center p-4 md:max-w-5xl"
     >
       {isLoading ? (
-        <Loader />
+        <div className="flex w-full items-center justify-center">
+          <Loader></Loader>
+        </div>
       ) : isError ? (
         <p>Error: {error.message}</p>
       ) : (

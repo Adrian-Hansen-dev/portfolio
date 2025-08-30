@@ -4,6 +4,7 @@ import ProjectCard from "./ProjectCard.tsx";
 import React from "react";
 import InfiniteScrollContainer from "@/components/custom/InfiniteScrollContainer.tsx";
 import Loader from "@/components/custom/Loader.tsx";
+import { Skeleton } from "@/components/ui/skeleton.tsx";
 
 interface ProjectListProps {
   sortBy: string;
@@ -66,7 +67,11 @@ function ProjectList({ searchBy, sortBy, filterBySkill }: ProjectListProps) {
   });
 
   return isPending ? (
-    <Loader />
+    <div className="grid grid-cols-1 gap-4 py-4">
+      {Array.from({ length: 3 }).map((_, i) => (
+        <Skeleton key={i} className="bg-secondary h-32 w-full rounded-xl" />
+      ))}
+    </div>
   ) : isError ? (
     <p>Error: {error.message}</p>
   ) : (
