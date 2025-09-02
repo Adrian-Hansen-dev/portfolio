@@ -6,8 +6,9 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    --background: hsl(210.0000 40.0000% 98.0392%);
-    --background-transition:hsl(222, 47%, 82%);
+    --background: hsl(222.2222 47.3684% 98%);
+    --transition: hsl(222, 47%, 85%);
+    --transition2: hsl(222, 47%, 100%);
     --foreground: hsl(217.2414 32.5843% 17.4510%);
     --card: hsl(0 0% 100%);
     --card-foreground: hsl(217.2414 32.5843% 17.4510%);
@@ -56,8 +57,9 @@
 }
 
 .dark {
-    --background: hsl(222.2222 47.3684% 11.1765%);
-    --background-transition: hsl(222, 47%, 18%);
+    --background: hsl(222.2222 47.3684% 10%);
+    --transition: hsl(222, 47%, 18%);
+    --transition2: hsl(222, 47%, 2%);
     --foreground: hsl(214.2857 31.8182% 91.3725%);
     --card: hsl(217.2414 32.5843% 17.4510%);
     --card-foreground: hsl(214.2857 31.8182% 91.3725%);
@@ -107,7 +109,8 @@
     --font-figtree: "Figtree", sans-serif;
 
     --color-background: var(--background);
-    --color-background-transition: var(--background-transition);
+    --color-transition: var(--transition);
+    --color-transition2: var(--transition2);
     --color-foreground: var(--foreground);
     --color-card: var(--card);
     --color-card-foreground: var(--card-foreground);
