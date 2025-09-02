@@ -19,7 +19,7 @@ export default function AboutOverview() {
   return (
     <section
       id="about"
-      className="flex min-h-screen w-full flex-col items-center p-4 md:max-w-5xl"
+      className="flex min-h-screen w-full flex-col justify-center p-4 md:max-w-5xl"
     >
       {isLoading ? (
         <div className="flex w-full items-center justify-center">

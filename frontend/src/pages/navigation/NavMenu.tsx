@@ -18,13 +18,13 @@ export const NavMenu = (props: NavigationMenuProps) => (
           </Button>
         </NavigationMenuLink>
       </NavigationMenuItem>
-      <NavigationMenuItem>
-        <NavigationMenuLink asChild>
-          <Button variant="ghost" onClick={() => scrollTo("experience")}>
-            Experience
-          </Button>
-        </NavigationMenuLink>
-      </NavigationMenuItem>
+      {/*<NavigationMenuItem>*/}
+      {/*  <NavigationMenuLink asChild>*/}
+      {/*    <Button variant="ghost" onClick={() => scrollTo("experience")}>*/}
+      {/*      Experience*/}
+      {/*    </Button>*/}
+      {/*  </NavigationMenuLink>*/}
+      {/*</NavigationMenuItem>*/}
       <NavigationMenuItem>
         <NavigationMenuLink asChild>
           <Button variant="ghost" onClick={() => scrollTo("projects")}>
