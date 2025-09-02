@@ -37,7 +37,7 @@ export default function AboutOverview() {
               {data.firstName} {data.lastName}
             </h3>
             <p className="p1 mb-3">{data.profession}</p>
-            <p className="p2">{data.description}</p>
+            <div className="p2 whitespace-pre-wrap">{data.description}</div>
             <div className="mt-1 flex gap-1">
               <Button
                 onClick={() => (location.href = data.githubLink)}
