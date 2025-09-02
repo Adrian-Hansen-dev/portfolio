@@ -40,7 +40,7 @@ function ProjectCard({ project }: ProjectCardProps) {
         </CardDescription>
       </CardContent>
       <CardFooter>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {project.skills.map((skill: Skill) => (
             <Badge variant="outline">{skill.name}</Badge>
           ))}
