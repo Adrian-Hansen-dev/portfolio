@@ -4,7 +4,7 @@ CREATE TABLE users
     first_name     VARCHAR(100) NOT NULL,
     last_name      VARCHAR(100) NOT NULL,
     profession     VARCHAR(100),
-    description    VARCHAR(2000),
+    description    VARCHAR(1000),
     github_link    VARCHAR(200),
     linked_in_link VARCHAR(200)
 );

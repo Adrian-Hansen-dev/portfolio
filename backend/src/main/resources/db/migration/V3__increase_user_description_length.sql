@@ -1,0 +1,2 @@
+ALTER TABLE users
+    ALTER COLUMN description TYPE VARCHAR(2000);
