@@ -7,27 +7,44 @@ import {
 import { NavigationMenuProps } from "@radix-ui/react-navigation-menu";
 import { Button } from "@/components/ui/button.tsx";
 import { scrollTo } from "@/util/scrollTo.tsx";
+import { Badge } from "@/components/ui/badge.tsx";
 
 export const NavMenu = (props: NavigationMenuProps) => (
   <NavigationMenu {...props}>
-    <NavigationMenuList className="gap-6 space-x-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start">
+    <NavigationMenuList className="relative gap-4 space-x-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start">
       <NavigationMenuItem>
         <NavigationMenuLink asChild>
-          <Button variant="ghost" onClick={() => scrollTo("about")}>
+          <Button
+            className="mx-2 my-1"
+            variant="ghost"
+            onClick={() => scrollTo("about")}
+          >
             About
           </Button>
         </NavigationMenuLink>
       </NavigationMenuItem>
-      {/*<NavigationMenuItem>*/}
-      {/*  <NavigationMenuLink asChild>*/}
-      {/*    <Button variant="ghost" onClick={() => scrollTo("experience")}>*/}
-      {/*      Experience*/}
-      {/*    </Button>*/}
-      {/*  </NavigationMenuLink>*/}
-      {/*</NavigationMenuItem>*/}
       <NavigationMenuItem>
         <NavigationMenuLink asChild>
-          <Button variant="ghost" onClick={() => scrollTo("projects")}>
+          <Button
+            disabled={true}
+            className="text- mx-2 my-1"
+            variant="ghost"
+            onClick={() => scrollTo("experience")}
+          >
+            Experience
+            <Badge className="absolute top-0 right-0 px-1 py-0.5 text-[0.6em]">
+              Soon
+            </Badge>
+          </Button>
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink asChild>
+          <Button
+            className="mx-2 my-1"
+            variant="ghost"
+            onClick={() => scrollTo("projects")}
+          >
             Projects
           </Button>
         </NavigationMenuLink>
