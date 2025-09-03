@@ -11,7 +11,7 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <div className="from-background dark:to-transition2 dark:via-transition to-transition via-transition2 min-h-screen flex-col items-center bg-linear-to-t from-80% via-88% to-100%">
+    <div className="min-h-screen flex-col items-center">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <QueryClientProvider client={queryClient}>
           <Navbar></Navbar>
