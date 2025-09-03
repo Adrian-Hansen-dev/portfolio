@@ -9,14 +9,11 @@ export default function Footer() {
         <a className="text-secondary-foreground" href="https://react.dev/">
           React
         </a>
-        {", "}
+        {" and "}
         <a className="text-secondary-foreground" href="https://spring.io/">
           Spring
         </a>
-        {" and "}
-        <a className="text-secondary-foreground" href="https://threejs.org/">
-          Three.js
-        </a>
+        {"."}
       </p>
     </div>
   );
