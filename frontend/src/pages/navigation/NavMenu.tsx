@@ -11,14 +11,10 @@ import { Badge } from "@/components/ui/badge.tsx";
 
 export const NavMenu = (props: NavigationMenuProps) => (
   <NavigationMenu {...props}>
-    <NavigationMenuList className="relative gap-4 space-x-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start">
+    <NavigationMenuList className="relative gap-6 space-x-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start">
       <NavigationMenuItem>
         <NavigationMenuLink asChild>
-          <Button
-            className="mx-2 my-1"
-            variant="ghost"
-            onClick={() => scrollTo("about")}
-          >
+          <Button variant="ghost" onClick={() => scrollTo("about")}>
             About
           </Button>
         </NavigationMenuLink>
@@ -27,12 +23,11 @@ export const NavMenu = (props: NavigationMenuProps) => (
         <NavigationMenuLink asChild>
           <Button
             disabled={true}
-            className="text- mx-2 my-1"
             variant="ghost"
             onClick={() => scrollTo("experience")}
           >
             Experience
-            <Badge className="absolute top-0 right-0 px-1 py-0.5 text-[0.6em]">
+            <Badge className="absolute -top-1 -right-2.5 px-1 py-0.5 text-[0.6em]">
               Soon
             </Badge>
           </Button>
@@ -40,11 +35,7 @@ export const NavMenu = (props: NavigationMenuProps) => (
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild>
-          <Button
-            className="mx-2 my-1"
-            variant="ghost"
-            onClick={() => scrollTo("projects")}
-          >
+          <Button variant="ghost" onClick={() => scrollTo("projects")}>
             Projects
           </Button>
         </NavigationMenuLink>
