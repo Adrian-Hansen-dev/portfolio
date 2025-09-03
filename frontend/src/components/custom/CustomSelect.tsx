@@ -29,7 +29,7 @@ export default function CustomSelect({
       <SelectTrigger className="flex items-center [&>svg]:hidden">
         <p className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
           {icon}
-          {label}
+          {!isMobile && label}
         </p>
         {!isMobile && (
           <>

@@ -60,7 +60,7 @@ function ProjectOverview() {
       className="flex min-h-screen w-full scroll-mt-20 flex-col p-4 md:max-w-5xl"
     >
       <h2 className="h2">Projects</h2>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between space-x-2">
         <div className="flex items-center justify-start space-x-2">
           <SearchInput
             value={searchBy}
