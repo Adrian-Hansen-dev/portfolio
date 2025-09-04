@@ -28,7 +28,7 @@ function ProjectCard({ project }: ProjectCardProps) {
           <div className="h3 flex">
             {project.name}
             {project.demoLink && (
-              <ArrowUpRight className="transition-all ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></ArrowUpRight>
+              <ArrowUpRight className="text-primary transition-all ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></ArrowUpRight>
             )}
           </div>
           <p className="p3">{formatDateGerman(project.creationDate)}</p>
