@@ -27,7 +27,7 @@ export const NavMenu = (props: NavigationMenuProps) => (
             onClick={() => scrollTo("experience")}
           >
             Experience
-            <Badge className="absolute -top-1 -right-2.5 px-1 py-0.5 text-[0.6em]">
+            <Badge className="absolute -top-0.5 -right-2.5 px-1 py-[0.01em] text-[0.6em]">
               Soon
             </Badge>
           </Button>
