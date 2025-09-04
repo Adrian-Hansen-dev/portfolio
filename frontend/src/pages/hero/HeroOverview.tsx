@@ -30,7 +30,7 @@ export default function HeroOverview() {
             </filter>
           </defs>
         </svg>
-        <div className="absolute inset-0 -z-8 h-full w-full overflow-hidden [filter:url(#goo)_blur(20px)]">
+        <div className="absolute inset-0 -z-8 h-full w-full overflow-hidden blur-2xl [filter:url(#goo)_blur(20px)]">
           <div className="animate-circle1 absolute top-[10%] left-[10%] h-[80%] w-[80%] origin-center bg-[radial-gradient(circle_at_center,rgba(var(--color1),0.8)_0,rgba(var(--color1),0)_50%)] opacity-100 mix-blend-hard-light"></div>
           <div className="animate-circle2 absolute top-[10%] left-[10%] h-[80%] w-[80%] origin-[calc(50%-400px)] bg-[radial-gradient(circle_at_center,rgba(var(--color2),0.8)_0,rgba(var(--color2),0)_50%)] opacity-100 mix-blend-hard-light"></div>
           <div className="animate-circle3 absolute top-[calc(10%+200px)] left-[calc(10%-500px)] h-[80%] w-[80%] origin-[calc(50%+400px)] bg-[radial-gradient(circle_at_center,rgba(var(--color3),0.8)_0,rgba(var(--color3),0)_50%)] opacity-100 mix-blend-hard-light"></div>
