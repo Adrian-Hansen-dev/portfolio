@@ -56,6 +56,8 @@ function ProjectList({ searchBy, sortBy, filterBySkill }: ProjectListProps) {
     queryFn: fetchProjects,
     initialPageParam: { page: 0, size: 6 },
     getNextPageParam: (lastPage) => {
+      if (lastPage.page.totalElements === 0) return undefined;
+
       if (lastPage.page.number == lastPage.page.totalPages - 1)
         return undefined;
 
