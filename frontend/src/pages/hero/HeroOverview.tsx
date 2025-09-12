@@ -40,8 +40,8 @@ export default function HeroOverview() {
       </div>
       <div className="flex flex-col justify-center p-4 md:max-w-5xl">
         <motion.h1
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: -18 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.8,
             delay: 0.5,
@@ -52,8 +52,8 @@ export default function HeroOverview() {
           An insight into my journey as a developer.
         </motion.h1>
         <motion.p
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: -18 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.8,
             delay: 0.75,
@@ -65,8 +65,8 @@ export default function HeroOverview() {
           software engineer.
         </motion.p>
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: -18 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.8,
             delay: 1,
