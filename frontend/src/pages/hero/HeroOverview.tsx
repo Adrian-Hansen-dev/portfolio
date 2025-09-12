@@ -30,7 +30,27 @@ export default function HeroOverview() {
             </filter>
           </defs>
         </svg>
-        <div className="absolute inset-0 -z-8 h-full w-full overflow-hidden blur-2xl [filter:url(#goo)_blur(20px)]">
+        <svg width="0" height="0">
+          <filter id="grain">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.8"
+              numOctaves="4"
+              result="noise"
+            />
+            <feComposite
+              in="SourceGraphic"
+              in2="noise"
+              operator="arithmetic"
+              k1="0.8"
+              k2="0"
+              k3="0"
+              k4="0"
+            />
+          </filter>
+        </svg>
+
+        <div className="absolute inset-0 -z-8 h-full w-full overflow-hidden blur-2xl [filter:url(#goo)_blur(20px)_url(#grain)]">
           <div className="animate-circle1 absolute top-[10%] left-[10%] h-[80%] w-[80%] origin-center bg-[radial-gradient(circle_at_center,rgba(var(--color1),0.8)_0,rgba(var(--color1),0)_50%)] opacity-100 mix-blend-hard-light"></div>
           <div className="animate-circle2 absolute top-[10%] left-[10%] h-[80%] w-[80%] origin-[calc(50%-400px)] bg-[radial-gradient(circle_at_center,rgba(var(--color2),0.8)_0,rgba(var(--color2),0)_50%)] opacity-100 mix-blend-hard-light"></div>
           <div className="animate-circle3 absolute top-[calc(10%+200px)] left-[calc(10%-500px)] h-[80%] w-[80%] origin-[calc(50%+400px)] bg-[radial-gradient(circle_at_center,rgba(var(--color3),0.8)_0,rgba(var(--color3),0)_50%)] opacity-100 mix-blend-hard-light"></div>
