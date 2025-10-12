@@ -13,7 +13,7 @@ public class ProjectSpecification {
     }
 
     public static Specification<Project> nameLike(String nameLike){
-        return ((root, query, builder) -> builder.like(root.get("name"), "%" + nameLike +"%"));
+        return ((root, query, builder) -> builder.like(builder.lower(root.get("name")), "%" + nameLike.toLowerCase() +"%"));
     }
 
     public static Specification<Project> containsSkills(List<String> skills){
