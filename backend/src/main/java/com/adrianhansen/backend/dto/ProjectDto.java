@@ -1,6 +1,6 @@
 package com.adrianhansen.backend.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public record ProjectDto(
@@ -9,7 +9,7 @@ public record ProjectDto(
         String description,
         String repoLink,
         String demoLink,
-        Date creationDate,
+        LocalDate creationDate,
         List<SkillDto> skills) {
 
 }

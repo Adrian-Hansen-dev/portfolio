@@ -2,7 +2,7 @@ package com.adrianhansen.backend.entitiy;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -18,7 +18,7 @@ public class Skill {
     private String name;
 
     @Column(name = "skill_begin_date")
-    private Date skillBeginDate;
+    private LocalDate skillBeginDate;
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "includes", joinColumns = @JoinColumn(name = "skill_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
@@ -27,7 +27,7 @@ public class Skill {
     public Skill() {
     }
 
-    public Skill(String name, Date skillBeginDate) {
+    public Skill(String name, LocalDate skillBeginDate) {
         this.name = name;
         this.skillBeginDate = skillBeginDate;
     }
@@ -48,11 +48,11 @@ public class Skill {
         this.name = name;
     }
 
-    public Date getSkillBeginDate() {
+    public LocalDate getSkillBeginDate() {
         return skillBeginDate;
     }
 
-    public void setSkillBeginDate(Date skillDate) {
+    public void setSkillBeginDate(LocalDate skillDate) {
         this.skillBeginDate = skillDate;
     }
 

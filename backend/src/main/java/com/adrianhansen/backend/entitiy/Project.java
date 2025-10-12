@@ -2,7 +2,7 @@ package com.adrianhansen.backend.entitiy;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -27,7 +27,7 @@ public class Project {
     private String demoLink;
 
     @Column(name = "creation_date")
-    private Date creationDate;
+    private LocalDate creationDate;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -93,11 +93,11 @@ public class Project {
         this.demoLink = demoLink;
     }
 
-    public Date getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 
