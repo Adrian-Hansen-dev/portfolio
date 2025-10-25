@@ -40,9 +40,10 @@ public class Project {
     public Project() {
     }
 
-    public Project(User user, String name) {
+    public Project(User user, String name, List<Skill> skills) {
         this.user = user;
         this.name = name;
+        this.skills = skills;
     }
 
     public Long getId() {

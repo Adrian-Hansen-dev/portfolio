@@ -27,9 +27,8 @@ public class Skill {
     public Skill() {
     }
 
-    public Skill(String name, LocalDate skillBeginDate) {
+    public Skill(String name) {
         this.name = name;
-        this.skillBeginDate = skillBeginDate;
     }
 
     public Long getId() {
