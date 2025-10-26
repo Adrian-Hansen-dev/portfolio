@@ -12,10 +12,10 @@ function ProjectOverview() {
   const apiUrl = import.meta.env.VITE_API_URL;
 
   const filterOptions = [
-    { label: "Project Name (A–Z)", value: "name&ascending=true" },
-    { label: "Project Name (Z–A)", value: "name&ascending=false" },
     { label: "Newest Projects First", value: "creationDate&ascending=false" },
     { label: "Oldest Projects First", value: "creationDate&ascending=true" },
+    { label: "Project Name (A–Z)", value: "name&ascending=true" },
+    { label: "Project Name (Z–A)", value: "name&ascending=false" },
   ];
 
   const { data, isLoading } = useQuery({
@@ -36,7 +36,7 @@ function ProjectOverview() {
     }),
   );
 
-  const [sortBy, setSortBy] = useState("name&ascending=true");
+  const [sortBy, setSortBy] = useState("creationDate&ascending=false");
   const [filterBy, setFilterBy] = useState<string[]>([]);
   const [searchBy, setSearchBy] = useState("");
 
