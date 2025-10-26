@@ -42,8 +42,8 @@ export default function HeroOverview() {
               in="SourceGraphic"
               in2="noise"
               operator="arithmetic"
-              k1="0.8"
-              k2="0"
+              k1="0.4"
+              k2="0.7"
               k3="0"
               k4="0"
             />
@@ -67,7 +67,7 @@ export default function HeroOverview() {
             delay: 0.5,
             ease: [0, 0.71, 0.2, 1.01],
           }}
-          className="h1"
+          className="h1 md:text-6xl"
         >
           An insight into my journey as a developer.
         </motion.h1>
