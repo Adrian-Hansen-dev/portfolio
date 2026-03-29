@@ -1,22 +1,24 @@
-# Importing JDK and copying required files
+# Stage 1: Build the application
 FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
-COPY pom.xml .
-COPY src src
 
-# Copy Maven wrapper
 COPY mvnw .
 COPY .mvn .mvn
+COPY pom.xml .
 
-# Set execution permission for the Maven wrapper
-RUN chmod +x ./mvnw
+RUN ./mvnw dependency:go-offline -B
+
+COPY src src
 RUN ./mvnw clean package -DskipTests -Pprod
 
-# Stage 2: Create the final Docker image using OpenJDK 19
-FROM openjdk:21-jdk
+# Stage 2: Create the final production image
+FROM eclipse-temurin:21-jre
 VOLUME /tmp
 
-# Copy the JAR from the build stage
+RUN useradd -ms /bin/sh springuser
+USER springuser
+
 COPY --from=build /app/target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+
 EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app.jar"]
