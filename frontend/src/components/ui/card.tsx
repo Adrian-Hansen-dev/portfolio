@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     <motion.div
       initial={{ opacity: 0, scale: 0.85, y: 20 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
