@@ -1,10 +1,18 @@
 import * as React from "react";
+import * as motion from "motion/react-client";
 
 import { cn } from "@/lib/utils";
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, scale: 0.85, y: 20 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{
+        duration: 0.6,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
       data-slot="card"
       className={cn(
         "bg-card text-card-foreground flex flex-col gap-2 rounded-xl border py-6 shadow-sm",
